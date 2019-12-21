@@ -1,4 +1,5 @@
 rootProject.name='Kommander Components'
+rootDir = ext['componentsRoot']
 include ':app'
 include ':android_core'
 include ':domain_core'

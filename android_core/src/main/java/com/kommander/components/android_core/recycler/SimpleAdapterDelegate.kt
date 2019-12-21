@@ -2,7 +2,7 @@ package com.kommander.components.android_core.recycler
 
 import android.view.ViewGroup
 import androidx.annotation.LayoutRes
-import com.hannesdorfmann.adapterdelegates3.AbsListItemAdapterDelegate
+import com.hannesdorfmann.adapterdelegates4.AbsListItemAdapterDelegate
 import com.kommander.components.android_core.extensions.inflateViewWithRoot
 
 open class SimpleAdapterDelegate<TItem : TItemBase, TItemBase : Any>(
