@@ -1,4 +1,4 @@
-package com.kommander.components.android_core.viewmodel
+package com.kommander.components.android_core.viewmodel.livedata
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData

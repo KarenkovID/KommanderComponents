@@ -43,4 +43,6 @@ dependencies {
     implementation(DI.toothpickRuntime)
     implementation(DI.toothpickSmoothie)
     kapt(DI.toothpickCompiler)
+
+    implementation(Libraries.cicerone)
 }
