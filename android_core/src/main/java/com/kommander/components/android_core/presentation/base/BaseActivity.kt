@@ -4,7 +4,11 @@ import androidx.annotation.LayoutRes
 import androidx.appcompat.app.AppCompatActivity
 import java.util.LinkedHashSet
 
-abstract class BaseActivity(@LayoutRes contentLayoutId: Int) : AppCompatActivity(contentLayoutId), OnBackPressable {
+abstract class BaseActivity : AppCompatActivity, OnBackPressable {
+
+    constructor(): super()
+
+    constructor(@LayoutRes contentLayoutId: Int): super(contentLayoutId)
 
     private var childBackPressedListeners: MutableSet<OnBackPressedListener> = LinkedHashSet()
 

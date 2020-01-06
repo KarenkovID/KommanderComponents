@@ -1,5 +1,6 @@
 package com.kommander.components.android_core.presentation.base
 
+import android.content.Context
 import android.os.Bundle
 import com.kommander.components.android_core.R
 import com.kommander.components.android_core.navigation.ScreenNavigation
@@ -11,14 +12,14 @@ abstract class BaseScreenContainerFragment : BaseFragment(R.layout.fragment_cont
 
     private lateinit var navigator: Navigator
 
-    protected abstract val routesNavigation: ScreenNavigation
+    protected abstract val navigation: ScreenNavigation
 
     protected abstract val navigatorHolder: NavigatorHolder
 
     protected abstract fun openFirstScreen()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
         navigator =
                 SupportAppNavigator(
                         requireActivity(),
@@ -44,6 +45,14 @@ abstract class BaseScreenContainerFragment : BaseFragment(R.layout.fragment_cont
         navigatorHolder.removeNavigator()
         super.onPause()
     }
+
+    override fun performOnBackPressed(): Boolean =
+            if (childFragmentManager.backStackEntryCount == 0) {
+                false
+            } else {
+                navigation.back()
+                true
+            }
 
 //    override fun onBackPressedInternal() = false
 
