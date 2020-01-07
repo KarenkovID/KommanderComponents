@@ -37,7 +37,7 @@ dependencies {
     implementation(Libraries.rxJava)
     implementation(Libraries.rxKotlin)
     implementation(Libraries.rxAndroid)
-    implementation(Libraries.androidLifecycleCompiler)
+//    implementation(Libraries.androidLifecycleCompiler)
     implementation(Libraries.androidLifecycleExtensions)
 
     implementation(DI.toothpickRuntime)
