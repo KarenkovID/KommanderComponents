@@ -10,13 +10,6 @@ import ru.terrakok.cicerone.commands.Replace
 
 open class AppRouter : Router() {
 
-//    val resultSubscription: Subject<Pair<Int, Any?>> = PublishSubject.create<Pair<Int, Any?>>().toSerialized()
-//
-//    fun sendResult(resultCode: Int, result: Any?): Boolean {
-//        resultSubscription.onNext(resultCode to result)
-//        return super.sendResult(resultCode, result)
-//    }
-
     fun backToAndNavigateTo(backScreen: Screen, navigateToScreenKey: Screen) {
         executeCommands(BackTo(backScreen), Forward(navigateToScreenKey))
     }

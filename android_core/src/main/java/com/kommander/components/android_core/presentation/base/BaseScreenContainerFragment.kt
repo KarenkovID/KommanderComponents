@@ -6,7 +6,10 @@ import com.kommander.components.android_core.R
 import com.kommander.components.android_core.navigation.ScreenNavigation
 import ru.terrakok.cicerone.Navigator
 import ru.terrakok.cicerone.NavigatorHolder
+import ru.terrakok.cicerone.android.support.AppNavigator
 import ru.terrakok.cicerone.android.support.SupportAppNavigator
+import ru.terrakok.cicerone.android.support.SupportAppScreen
+import ru.terrakok.cicerone.commands.Forward
 
 abstract class BaseScreenContainerFragment : BaseFragment(R.layout.fragment_container), InnerScreensStack {
 
@@ -20,8 +23,7 @@ abstract class BaseScreenContainerFragment : BaseFragment(R.layout.fragment_cont
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        navigator =
-                SupportAppNavigator(
+        navigator = AppNavigator(
                         requireActivity(),
                         childFragmentManager,
                         R.id.screenContainer
