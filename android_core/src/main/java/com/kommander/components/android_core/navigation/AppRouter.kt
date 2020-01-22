@@ -10,13 +10,6 @@ import ru.terrakok.cicerone.commands.Replace
 
 open class AppRouter : Router() {
 
-//    val resultSubscription: Subject<Pair<Int, Any?>> = PublishSubject.create<Pair<Int, Any?>>().toSerialized()
-//
-//    fun sendResult(resultCode: Int, result: Any?): Boolean {
-//        resultSubscription.onNext(resultCode to result)
-//        return super.sendResult(resultCode, result)
-//    }
-
     fun backToAndNavigateTo(backScreen: Screen, navigateToScreenKey: Screen) {
         executeCommands(BackTo(backScreen), Forward(navigateToScreenKey))
     }
@@ -43,9 +36,7 @@ open class AppRouter : Router() {
 
     private fun createForawrdCommands(screens: List<Screen>): List<Command> {
         return screens.fold(mutableListOf()) { acc, screen ->
-            acc.apply {
-                add(Forward(screen))
-            }
+            acc.also { it.add(Forward(screen)) }
         }
     }
 
@@ -90,7 +81,7 @@ open class AppRouter : Router() {
         if (this == 1) return listOf(provider.invoke())
 
         return (0 until this).fold(mutableListOf()) { acc, _ ->
-            acc.apply { add(provider.invoke()) }
+            acc.also { it.add(provider.invoke()) }
         }
     }
 

@@ -3,6 +3,7 @@ package com.kommander.components.android_core.navigation
 open class ScreenNavigation(
         protected val router: AppRouter
 ) {
+
 //    val resultSubscription = router.resultSubscription
 
     // Need to store navigations for connecting with navigator

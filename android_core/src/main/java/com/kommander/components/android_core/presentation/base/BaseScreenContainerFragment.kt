@@ -20,8 +20,7 @@ abstract class BaseScreenContainerFragment : BaseFragment(R.layout.fragment_cont
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        navigator =
-                SupportAppNavigator(
+        navigator = SupportAppNavigator(
                         requireActivity(),
                         childFragmentManager,
                         R.id.screenContainer

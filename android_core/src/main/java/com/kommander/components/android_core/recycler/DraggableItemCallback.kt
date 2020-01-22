@@ -18,6 +18,7 @@ open class DraggableItemCallback(
         private val dragStartAnimator: Animator? = null,
         private val dragEndAnimator: Animator? = null,
         @Px private val autoScrollBoundsOffset: Int = 0,
+        @Suppress("detekt.MagicNumber")
         @Px private val maxDragScroll: Int = 20.pxInt
 ) : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0) {
 

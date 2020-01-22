@@ -17,6 +17,7 @@ class PatchedItemTouchHelper(
 
     private val tempRect: Rect by lazy(::Rect)
 
+    @Suppress("detekt.LongMethod", "detekt.ComplexMethod")
     override fun scrollIfNecessary(): Boolean {
         if (mSelected == null) {
             dragScrollStartTimeInMs = java.lang.Long.MIN_VALUE

@@ -34,6 +34,7 @@ class StackLayoutManager(
 
     }
 
+    @Suppress("PrivatePropertyName", "detekt.VariableNaming", "detekt.MagicNumber")
     private val DP_PER_SECOND_UNIT = (1000 / 1.px).toInt()
 
     @Px
@@ -261,6 +262,7 @@ class StackLayoutManager(
         return left.toInt()
     }
 
+    @Suppress("detekt.MagicNumber")
     private fun computeSettleDuration(distance: Int, xvel: Float): Int {
         val sWeight = 0.5f * distance / itemSizeWithSpace
         val velWeight = if (xvel > 0) 0.5f * minVelocityX / xvel else 0f
@@ -329,11 +331,11 @@ class StackLayoutManager(
         }
         //scroll to left
         if (prevLastShowed < currLastShowed) {
-            for (pos in (prevLastShowed + 1)..currLastShowed) {
+            for (pos in prevLastShowed + 1..currLastShowed) {
                 stackItemsCallback?.onItemShowedInStack(pos)
             }
         } else {
-            for (pos in (currLastShowed + 1)..prevLastShowed) {
+            for (pos in currLastShowed + 1..prevLastShowed) {
                 stackItemsCallback?.onItemHidedInStack(pos)
             }
         }

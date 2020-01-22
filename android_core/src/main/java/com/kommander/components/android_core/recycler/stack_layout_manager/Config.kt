@@ -4,7 +4,7 @@ import androidx.annotation.FloatRange
 import androidx.annotation.IntRange
 import androidx.annotation.Px
 
-class Config(
+data class Config(
 
         @IntRange(from = 2) @Px
         var stackItemsSpace: Int = 60,
