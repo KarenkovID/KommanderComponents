@@ -30,3 +30,7 @@ fun Completable.schedulersIoToMain(schedulersProvider: RxSchedulersProvider) =
         subscribeOn(schedulersProvider.io()).observeOn(schedulersProvider.ui())
 
 fun <T: Any> T?.toMaybe(): Maybe<T> = if (this == null) Maybe.empty() else Maybe.just(this)
+
+fun <T: Any> single(block: () -> T): Single<T> = Single.fromCallable(block)
+
+fun completable(block: () -> Unit): Completable = Completable.fromAction(block)

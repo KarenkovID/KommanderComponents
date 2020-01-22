@@ -11,36 +11,40 @@ import io.reactivex.disposables.Disposable
 fun <T> Flowable<out T>.dispatchTo(liveData: MutableLiveData<ContentEvent<T>>): Disposable {
     liveData.value = ContentEvent.Loading(liveData.value?.data)
     return this
-            .doOnNext { data -> liveData.value = ContentEvent.Success(data) }
-            .doOnError { throwable -> liveData.value = ContentEvent.Error(throwable, liveData.value?.data) }
-            .doOnComplete { liveData.value = ContentEvent.Complete(liveData.value?.data) }
-            .subscribe()
+            .subscribe(
+                    { data -> liveData.value = ContentEvent.Success(data) },
+                    { throwable -> liveData.value = ContentEvent.Error(throwable, liveData.value?.data) },
+                    { liveData.value = ContentEvent.Complete(liveData.value?.data) }
+            )
 }
 
 fun <T> Observable<out T>.dispatchTo(liveData: MutableLiveData<ContentEvent<T>>): Disposable {
     liveData.value = ContentEvent.Loading(liveData.value?.data)
     return this
-            .doOnNext { data -> liveData.value = ContentEvent.Success(data) }
-            .doOnError { throwable -> liveData.value = ContentEvent.Error(throwable, liveData.value?.data) }
-            .doOnComplete { liveData.value = ContentEvent.Complete(liveData.value?.data) }
-            .subscribe()
+            .subscribe(
+                    { data -> liveData.value = ContentEvent.Success(data) },
+                    { throwable -> liveData.value = ContentEvent.Error(throwable, liveData.value?.data) },
+                    { liveData.value = ContentEvent.Complete(liveData.value?.data) }
+            )
 }
 
 fun <T> Single<out T>.dispatchTo(liveData: MutableLiveData<ContentEvent<T>>): Disposable {
     liveData.value = ContentEvent.Loading(liveData.value?.data)
     return this
-            .doOnSuccess { data -> liveData.value = ContentEvent.Success(data) }
-            .doOnError { throwable -> liveData.value = ContentEvent.Error(throwable, liveData.value?.data) }
-            .subscribe()
+            .subscribe(
+                    { data -> liveData.value = ContentEvent.Success(data) },
+                    { throwable -> liveData.value = ContentEvent.Error(throwable, liveData.value?.data) }
+            )
 }
 
 fun <T> Maybe<out T>.dispatchTo(liveData: MutableLiveData<ContentEvent<T>>): Disposable {
     liveData.value = ContentEvent.Loading(liveData.value?.data)
     return this
-            .doOnSuccess { data -> liveData.value = ContentEvent.Success(data) }
-            .doOnComplete { liveData.value = null }
-            .doOnError { throwable -> liveData.value = ContentEvent.Error(throwable, liveData.value?.data) }
-            .subscribe()
+            .subscribe(
+                    { data -> liveData.value = ContentEvent.Success(data) },
+                    { throwable -> liveData.value = ContentEvent.Error(throwable, liveData.value?.data) },
+                    { liveData.value = ContentEvent.Complete(liveData.value?.data) }
+            )
 }
 
 fun <T> Completable.dispatchTo(liveData: MutableLiveData<Event>): Disposable {
@@ -48,5 +52,8 @@ fun <T> Completable.dispatchTo(liveData: MutableLiveData<Event>): Disposable {
     return this
             .doOnComplete { liveData.value = Event.Complete }
             .doOnError { throwable -> liveData.value = Event.Error(throwable) }
-            .subscribe()
+            .subscribe(
+                    { liveData.value = Event.Complete },
+                    { throwable -> liveData.value = Event.Error(throwable) }
+            )
 }

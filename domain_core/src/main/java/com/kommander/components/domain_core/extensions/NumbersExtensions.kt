@@ -5,7 +5,7 @@ import java.lang.StringBuilder
 fun Int.toRankingString(rank: Int = 3): String{
     val str = toString()
     val res = StringBuilder(str)
-    var startPos = (str.length % rank)
+    var startPos = str.length % rank
     if (startPos == 0) {
         startPos = rank
     }

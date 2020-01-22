@@ -36,9 +36,7 @@ open class AppRouter : Router() {
 
     private fun createForawrdCommands(screens: List<Screen>): List<Command> {
         return screens.fold(mutableListOf()) { acc, screen ->
-            acc.apply {
-                add(Forward(screen))
-            }
+            acc.also { it.add(Forward(screen)) }
         }
     }
 
@@ -83,7 +81,7 @@ open class AppRouter : Router() {
         if (this == 1) return listOf(provider.invoke())
 
         return (0 until this).fold(mutableListOf()) { acc, _ ->
-            acc.apply { add(provider.invoke()) }
+            acc.also { it.add(provider.invoke()) }
         }
     }
 

@@ -19,6 +19,8 @@ open class SimpleAdapterDelegate<TItem : TItemBase, TItemBase : Any>(
     override fun onBindViewHolder(item: TItem, viewHolder: ViewHolder, payloads: List<Any>) =
             onBindViewHolder(item, viewHolder)
 
+    //detekt bug
+    @Suppress("detekt.OptionalUnit")
     protected open fun onBindViewHolder(item: TItem, viewHolder: ViewHolder) = Unit
 
 }

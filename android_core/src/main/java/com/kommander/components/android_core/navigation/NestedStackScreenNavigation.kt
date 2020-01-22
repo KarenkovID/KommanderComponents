@@ -3,7 +3,7 @@ package com.kommander.components.android_core.navigation
 import ru.terrakok.cicerone.Screen
 import ru.terrakok.cicerone.android.support.SupportAppScreen
 
-abstract class NestedStackScreenNavigation(
+open class NestedStackScreenNavigation(
         private val screenRouter: AppRouter
 ) {
 

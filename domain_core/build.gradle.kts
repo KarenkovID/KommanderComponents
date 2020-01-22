@@ -8,4 +8,6 @@ dependencies {
     implementation(Libraries.rxKotlin)
 
     testImplementation(TestLibraries.junit4)
+
+    api(Libraries.timber)
 }
