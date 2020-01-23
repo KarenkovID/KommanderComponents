@@ -6,9 +6,9 @@ import java.util.LinkedHashSet
 
 abstract class BaseFragment : Fragment, OnBackPressable, OnBackPressedListener {
 
-    constructor(@LayoutRes contentLayoutId: Int): super(contentLayoutId)
+    constructor(@LayoutRes contentLayoutId: Int) : super(contentLayoutId)
 
-    constructor(): super()
+    constructor() : super()
 
     private var childBackPressedListeners: MutableSet<OnBackPressedListener> = LinkedHashSet()
 

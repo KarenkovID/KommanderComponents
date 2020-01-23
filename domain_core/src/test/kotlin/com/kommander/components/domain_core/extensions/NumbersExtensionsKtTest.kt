@@ -1,7 +1,7 @@
-package com.kommander.components.domain_core.extensions;
+package com.kommander.components.domain_core.extensions
 
 import org.junit.Assert
-import org.junit.Test;
+import org.junit.Test
 
 class NumbersExtensionsKtTest {
 

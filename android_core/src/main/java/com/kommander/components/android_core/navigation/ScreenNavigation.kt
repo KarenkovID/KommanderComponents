@@ -13,7 +13,7 @@ open class ScreenNavigation(
 
 //    fun register(navigator: SupportAppNavigator) {
 //        navs.forEach { it.register(navigator) }
-////        screens.forEach { navigator.registerScreenSpec(it) }
+// //        screens.forEach { navigator.registerScreenSpec(it) }
 //    }
 
     fun back(deep: Int = 1) {

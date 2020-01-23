@@ -22,8 +22,8 @@ import kotlin.properties.Delegates
 
 @Keep
 class StackLayoutManager(
-    config: Config = Config(),
-    private var stackItemsCallback: StackItemsCallback? = null
+        config: Config = Config(),
+        private var stackItemsCallback: StackItemsCallback? = null
 ) : RecyclerView.LayoutManager() {
 
     companion object {
@@ -54,7 +54,7 @@ class StackLayoutManager(
     private var itemWidth: Int = 0
     @Px
     private var totalOffset: Int = 0
-    //the counting variable ,record the total offset including parallax
+    // the counting variable ,record the total offset including parallax
     @Px
     private var prevTotalOffset: Int = NO_PREV_OFFSET
     private var animator: ObjectAnimator? = null
@@ -77,7 +77,7 @@ class StackLayoutManager(
 
     private val onFlingListener = OnFlingListener()
 
-    //This field is used for ObjectAnimator
+    // This field is used for ObjectAnimator
     @Suppress("Unused")
     var animateValue: Int = 0
         set(animateValue) {
@@ -161,19 +161,19 @@ class StackLayoutManager(
     private fun fill(recycler: RecyclerView.Recycler, rawDx: Int, applyParallax: Boolean = true): Int {
         val dx = calculatePossibleDx(rawDx, applyParallax)
         when {
-            totalOffset + dx < 0
-                    || totalOffset + dx == prevTotalOffset
+            totalOffset + dx < 0 ||
+                    totalOffset + dx == prevTotalOffset
                     || (totalOffset.toFloat() + dx.toFloat()) / itemSizeWithSpace > itemCount - 1 -> {
                 return 0
             }
             itemWidth == 0 -> {
-                //got the itemSizeWithSpace basing on the first child,of course we assume that  all the item has the same size
+                // got the itemSizeWithSpace basing on the first child,of course we assume that  all the item has the same size
                 detachAndScrapAttachedViews(recycler)
                 val anchorView = recycler.getViewForPosition(0)
                 measureChildWithMargins(anchorView, 0, 0)
                 itemWidth = anchorView.measuredWidth
                 itemSizeWithSpace = itemWidth + outItemsSpace
-                //because this method will be called twice
+                // because this method will be called twice
                 minVelocityX = ViewConfiguration.get(anchorView.context).scaledMinimumFlingVelocity
             }
         }
@@ -192,7 +192,7 @@ class StackLayoutManager(
         } else {
             min(itemCount - 1, currPos + leavingSpace / stackItemsSpace + 1)
         }
-        //layout view
+        // layout view
         for (i in start..end) {
             val view = recycler.getViewForPosition(i)
 
@@ -228,7 +228,7 @@ class StackLayoutManager(
 
     private fun recycleViews(recycler: RecyclerView.Recycler, dx: Int) {
         val count = childCount
-        //remove and recycle views
+        // remove and recycle views
         for (i in 0 until count) {
             val child = getChildAt(i)!!
             if (recycleHorizontally(child, dx)) {
@@ -251,11 +251,11 @@ class StackLayoutManager(
         val relativeOffset = offsetFromAnchor.toFloat() / itemSizeWithSpace
 
         val left = when {
-            //current
+            // current
             position == currPos -> anchorViewBaseLine - relativeOffset * itemSizeWithSpace
-            //out of stack
+            // out of stack
             position < currPos -> anchorViewBaseLine - (itemWidth + outItemsSpace) * (currPos - position + relativeOffset)
-            //in stack
+            // in stack
             else -> anchorViewBaseLine + stackItemsSpace * (position - currPos - relativeOffset)
         }
         Timber.d("position $position left $left currPos $currPos tail $offsetFromAnchor x $relativeOffset")
@@ -329,7 +329,7 @@ class StackLayoutManager(
         if (prevLastShowed == currLastShowed) {
             return
         }
-        //scroll to left
+        // scroll to left
         if (prevLastShowed < currLastShowed) {
             for (pos in prevLastShowed + 1..currLastShowed) {
                 stackItemsCallback?.onItemShowedInStack(pos)

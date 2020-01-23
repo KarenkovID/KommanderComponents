@@ -6,9 +6,9 @@ import java.util.LinkedHashSet
 
 abstract class BaseActivity : AppCompatActivity, OnBackPressable {
 
-    constructor(): super()
+    constructor() : super()
 
-    constructor(@LayoutRes contentLayoutId: Int): super(contentLayoutId)
+    constructor(@LayoutRes contentLayoutId: Int) : super(contentLayoutId)
 
     private var childBackPressedListeners: MutableSet<OnBackPressedListener> = LinkedHashSet()
 

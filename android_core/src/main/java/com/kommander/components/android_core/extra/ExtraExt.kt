@@ -47,4 +47,3 @@ inline fun <reified T> activityArgs(): ReadOnlyProperty<FragmentActivity, T> = G
         else -> throw TypeNotPresentException(T::class.java.simpleName, null)
     }
 } as ReadOnlyProperty<FragmentActivity, T>
-

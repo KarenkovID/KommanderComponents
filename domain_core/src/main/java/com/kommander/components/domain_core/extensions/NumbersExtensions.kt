@@ -2,7 +2,7 @@ package com.kommander.components.domain_core.extensions
 
 import java.lang.StringBuilder
 
-fun Int.toRankingString(rank: Int = 3): String{
+fun Int.toRankingString(rank: Int = 3): String {
     val str = toString()
     val res = StringBuilder(str)
     var startPos = str.length % rank
