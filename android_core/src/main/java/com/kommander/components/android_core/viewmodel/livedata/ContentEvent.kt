@@ -1,7 +1,5 @@
 package com.kommander.components.android_core.viewmodel.livedata
 
-import java.lang.Error
-
 sealed class ContentEvent<out T>(open val data: T?) {
 
     fun isLoading() = this is Loading
