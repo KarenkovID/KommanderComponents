@@ -1,4 +1,4 @@
-package com.kommander.components.android.recycler.stack_layout_manager
+package com.kommander.components.android.recycler.stackLayoutManager
 
 import androidx.annotation.FloatRange
 import androidx.annotation.IntRange
