@@ -13,7 +13,7 @@ class GenericFragmentArg<T>(
 ) : ReadWriteProperty<Fragment, T?> {
 
     override fun getValue(thisRef: Fragment, property: KProperty<*>): T? {
-        return if (thisRef.arguments!!.containsKey(property.name)) {
+        return if (thisRef.arguments?.containsKey(property.name) == true) {
             get(thisRef.arguments!!, property.name)
         } else {
             null
