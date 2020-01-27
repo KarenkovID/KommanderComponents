@@ -47,7 +47,7 @@ fun <T> Maybe<out T>.dispatchTo(liveData: MutableLiveData<ContentEvent<T>>): Dis
             )
 }
 
-fun <T> Completable.dispatchTo(liveData: MutableLiveData<Event>): Disposable {
+fun Completable.dispatchTo(liveData: MutableLiveData<Event>): Disposable {
     liveData.value = Event.Loading
     return this
             .doOnComplete { liveData.value = Event.Complete }
