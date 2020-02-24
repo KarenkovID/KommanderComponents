@@ -1,0 +1,18 @@
+package com.kommander.components.android.rx
+
+import com.kommander.components.domain.rx.RxSchedulersProvider
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
+import toothpick.InjectConstructor
+
+@InjectConstructor
+class RxSchedulersProviderImpl : RxSchedulersProvider {
+
+    override fun io() = Schedulers.io()
+
+    override fun computation() = Schedulers.computation()
+
+    override fun ui() = AndroidSchedulers.mainThread()
+
+    override fun newThread() = Schedulers.newThread()
+}

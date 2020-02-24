@@ -7,5 +7,8 @@ dependencies {
     implementation(Libraries.rxJava)
     implementation(Libraries.rxKotlin)
 
-    testImplementation(TestLibraries.junit4)
+    implementation(kotlin(TestLibraries.kotlinTest))
+    implementation(kotlin(TestLibraries.kotlinJunit5))
+
+    api(Libraries.timber)
 }
