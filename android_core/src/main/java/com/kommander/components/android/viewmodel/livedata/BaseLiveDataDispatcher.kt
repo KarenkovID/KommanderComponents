@@ -22,9 +22,9 @@ fun <T> Flowable<out T>.dispatchTo(liveData: MutableLiveData<ContentEvent<T>>): 
 fun <T> Observable<out T>.dispatchTo(liveData: MutableLiveData<ContentEvent<T>>): Disposable {
     liveData.value = ContentEvent.Loading(liveData.value?.data)
     return this
-            .doOnNext { data -> liveData.value = ContentEvent.Success(data) }
-            .doOnError { throwable -> liveData.value = ContentEvent.Error(throwable, liveData.value?.data) }
-            .doOnComplete { liveData.value = ContentEvent.Complete(liveData.value?.data) }
+            .doOnNext { data -> liveData.postValue(ContentEvent.Success(data)) }
+            .doOnError { throwable -> liveData.postValue(ContentEvent.Error(throwable, liveData.value?.data)) }
+//            .doOnComplete { liveData.postValue(ContentEvent.Complete(liveData.value?.data)) }
             .subscribe()
 }
 
